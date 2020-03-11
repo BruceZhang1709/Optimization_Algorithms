@@ -1,6 +1,6 @@
 import numpy as np
 
-def Simplex(A,B,Z,Max=True):
+def Simplex(A,B,Z,Min=True):
     """
     Objective:
     This function uses the Simplex algorithm to optimize a linear program.
@@ -18,6 +18,8 @@ def Simplex(A,B,Z,Max=True):
     Outputs: 
         Solved: np.array
             A size 1 x n array with the number of each variable requirerd for optimum solution.
+        Obj: double
+            The Objective value of the optimal solution.
     
     Notes:
     B should have the inequality signs (-1 for <=, 0 for =, 1 for >=) in the first column and RHS in the second.
@@ -26,5 +28,16 @@ def Simplex(A,B,Z,Max=True):
     Author: Bruce Zhang
 
     """
+    # Make the objective a minimization problem.
+    if Min == False:
+        Z = -1 * Z
+    
+    
+    Obj = Z
+    if Min == False:
+        Obj = -1 * Obj
+
+
+
 
 
