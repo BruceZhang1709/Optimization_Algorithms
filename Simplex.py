@@ -31,12 +31,16 @@ def Simplex(A,B,Z,Min=True):
     # Make the objective a minimization problem.
     if Min == False:
         Z = -1 * Z
+    # Get the shape of the A matrix
     m,n = np.shape(A)
+    # Give X in AX = B the correct shape
     X = np.zeros((m*2,1))
+    # Create initial basis solution of X' = 0 and Xb = B
     for i in range(0,m):
         X[i+m][0] = B[i][1]
+    # Make the shape for A the correct size to implement slack variables.
     A = np.append(A,np.zeros((m,m)),axis=1)
-    
+
     
     Obj = Z
     if Min == False:
