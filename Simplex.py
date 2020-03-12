@@ -31,13 +31,24 @@ def Simplex(A,B,Z,Min=True):
     # Make the objective a minimization problem.
     if Min == False:
         Z = -1 * Z
+    m,n = np.shape(A)
+    X = np.zeros((m*2,1))
+    for i in range(0,m):
+        X[i+m][0] = B[i][1]
+    A = np.append(A,np.zeros((m,m)),axis=1)
     
     
     Obj = Z
     if Min == False:
         Obj = -1 * Obj
 
+    print(A,B,X)
+    return X
 
-
+if True==True:
+    A = np.ones((4,2))
+    B = np.ones((4,2))
+    Z = np.ones((1,2))
+    Simplex(A,B,Z)
 
 
